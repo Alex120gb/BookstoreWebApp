@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<br />
+<br />
+<br />
+
+<table id="bookTable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Year</th>
+            <th>ISBN</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div id="editModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit book</h5>
+                <button type="button" class="btn-close btn-edit-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idEdit" value="" />
+
+                <div class="mb-3">
+                    <label for="title" class="col-form-label">Title:</label>
+                    <input type="text" class="form-control" id="titleEdit">
+                </div>
+
+                <div class="mb-3">
+                    <label for="author" class="col-form-label">Author:</label>
+                    <input type="text" class="form-control" id="authorEdit">
+                </div>
+
+                <div class="mb-3">
+                    <label for="publicationYear" class="col-form-label">Publication Year:</label>
+                    <input type="text" class="form-control" id="publicationYearEdit">
+                </div>
+
+                <div class="mb-3">
+                    <label for="isbn" class="col-form-label">ISBN:</label>
+                    <input type="text" class="form-control" id="isbnEdit">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-edit-modal-close" data-bs-dismiss="modal">Close</button>
+                <button id="saveEditButton" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="deleteModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete book</h5>
+                <button type="button" class="btn-close delete-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idDelete" value="" />
+                <p>Are you sure you want to delete this book?</p>
+                <h5>Title: <span id="titleDelete"></span></h5>
+                <h5>Author: <span id="authorDelete"></span></h5>
+                <h5>Publication Year: <span id="publicationYearDelete"></span></h5>
+                <h5>ISBN: <span id="isbnDelete"></span></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary delete-modal-close" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

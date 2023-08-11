@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Account/LoginLayout.cshtml";
+}
+<script src="~/js/register.js"></script>
+<body>
+    <div class="register-container">
+        <form class="register-form" id="register-form">
+            <h1>Register</h1>
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+
+            <button type="submit" class="register-button">Register</button>
+            <p class="error-message" style="color: red; display: none;">Registration failed. Please try again.</p>
+        </form>
+        <br />
+        <p>Already have an account? <a href="/Account/Index">Login</a></p>
+    </div>
+</body>

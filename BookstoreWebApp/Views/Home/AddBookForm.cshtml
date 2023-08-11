@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Add Book Form";
+}
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="~/js/add-book.js"></script>
+
+<div class="container">
+    <form id="addBook">
+        <h1>Add a new book!</h1>
+
+        <label for="addTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" id="addTitle" required>
+
+        <label for="addAuthor" class="form-label">Author</label>
+        <input type="text" class="form-control" id="addAuthor" required>
+
+        <label for="addPublicationYear" class="form-label">Publication Year</label>
+        <input type="text" class="form-control" id="addPublicationYear" required>
+
+        <label for="addIsbn" class="form-label">ISBN</label>
+        <input type="text" class="form-control" id="addIsbn" required>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Add Book</button>
+        <p class="error-message" style="color: red; display: none;"></p>
+    </form>
+</div>

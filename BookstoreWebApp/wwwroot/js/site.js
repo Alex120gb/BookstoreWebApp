@@ -1,4 +1,15 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    $("#logoutButton").click(function () {
+        $('#logoutModal').show();
+    });
 
-// Write your JavaScript code.
+    $('#logoutModal').on('click', '.no-logout-button', function () {
+        $('#logoutModal').hide();
+    });
+
+    $('#logoutModal').on('click', '.yes-logout-button', function () {
+        $('#logoutModal').hide();
+        sessionStorage.removeItem('token');
+        window.location.href = "/Account/Index";
+    });
+});

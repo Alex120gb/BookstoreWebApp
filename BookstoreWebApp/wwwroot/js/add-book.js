@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
+    var authToken = sessionStorage.getItem('token');
+    if (authToken == null || authToken == "") {
+        window.location.href = "/Account/Index";
+    }
     $('#addBook').submit(function (event) {
-        var authToken = sessionStorage.getItem('token');
         $('#spinner').modal('show');
         var model = {
             title: $('#addTitle').val(),

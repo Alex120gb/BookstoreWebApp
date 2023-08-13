@@ -3,87 +3,82 @@ using Microsoft.AspNetCore.Mvc;
 using BookstoreWebApp.Models;
 using BookstoreSdk.Clients.Interface;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using System.Net.Http.Headers;
-using System.Net.Http;
 using BookstoreSdk.ViewModels;
 
-namespace BookstoreWebApp.Controllers;
-
-public class HomeController : Controller
+namespace BookstoreWebApp.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly IBookClient _bookClient;
-    private readonly IMapper _mapper;
-
-    public HomeController(ILogger<HomeController> logger, 
-                          IBookClient bookClient,
-                          IMapper mapper)
+    public class HomeController : Controller
     {
-        _logger = logger;
-        _bookClient = bookClient;
-        _mapper = mapper;
-    }
+        private readonly IBookClient _bookClient;
+        private readonly IMapper _mapper;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(IBookClient bookClient,
+                              IMapper mapper)
+        {
+            _bookClient = bookClient;
+            _mapper = mapper;
+        }
 
-    public IActionResult AddBookForm()
-    {
-        return View();
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    [HttpPost]
-    public async Task<JsonResult> GetBooks()
-    {
-        string token = HttpContext.Request.Headers["Authorization"];
+        public IActionResult AddBookForm()
+        {
+            return View();
+        }
 
-        var result = await _bookClient.GetBooks(token);
+        [HttpPost]
+        public async Task<JsonResult> GetBooks()
+        {
+            var token = HttpContext.Request.Headers["Authorization"];
 
-        var mappedData = _mapper.Map<List<GetUpdateBooksViewModel>>(result);
+            var result = await _bookClient.GetBooks(token);
 
-        return Json(mappedData);
-    }
+            var mappedData = _mapper.Map<List<GetUpdateBooksViewModel>>(result);
 
-    [HttpPost]
-    public async Task<JsonResult> AddBook([FromBody] BooksModel request)
-    {
-        string token = HttpContext.Request.Headers["Authorization"];
+            return Json(mappedData);
+        }
 
-        var mappedData = _mapper.Map<SdkBooksModel>(request);
+        [HttpPost]
+        public async Task<JsonResult> AddBook([FromBody] BooksModel request)
+        {
+            var token = HttpContext.Request.Headers["Authorization"];
 
-        var result = await _bookClient.AddBooks(mappedData, token);
+            var mappedData = _mapper.Map<SdkBooksModel>(request);
 
-        return Json(result);
-    }
+            var result = await _bookClient.AddBooks(mappedData, token);
 
-    [HttpPost]
-    public async Task<JsonResult> UpdateBook([FromBody] GetUpdateBooksViewModel request)
-    {
-        string token = HttpContext.Request.Headers["Authorization"];
+            return Json(result);
+        }
 
-        var mappedData = _mapper.Map<SdkGetUpdateBooksModel>(request);
+        [HttpPost]
+        public async Task<JsonResult> UpdateBook([FromBody] GetUpdateBooksViewModel request)
+        {
+            var token = HttpContext.Request.Headers["Authorization"];
 
-        var result = await _bookClient.UpdateBook(mappedData, token);
+            var mappedData = _mapper.Map<SdkGetUpdateBooksModel>(request);
 
-        return Json(result);
-    }
+            var result = await _bookClient.UpdateBook(mappedData, token);
 
-    [HttpPost]
-    public async Task<JsonResult> DeleteBook([FromBody] int id)
-    {
-        string token = HttpContext.Request.Headers["Authorization"];
+            return Json(result);
+        }
 
-        var result = await _bookClient.DeleteBook(id, token);
+        [HttpPost]
+        public async Task<JsonResult> DeleteBook([FromBody] int id)
+        {
+            var token = HttpContext.Request.Headers["Authorization"];
 
-        return Json(result);
-    }
+            var result = await _bookClient.DeleteBook(id, token);
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return Json(result);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

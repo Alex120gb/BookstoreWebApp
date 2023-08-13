@@ -1,7 +1,10 @@
 ﻿var dataTable;
 $(document).ready(function () {
-
     var authToken = sessionStorage.getItem('token');
+    if (authToken == null || authToken == "") {
+        window.location.href = "/Account/Index";
+    }
+    
     $('#spinner').modal('show');
     $.ajax({
         url: '/Home/GetBooks',

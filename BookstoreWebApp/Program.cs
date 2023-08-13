@@ -1,7 +1,6 @@
 using AutoMapper;
 using BookstoreSdk.Clients;
 using BookstoreSdk.Clients.Interface;
-using Microsoft.AspNetCore.Hosting;
 using BookstoreWebApp.MappingProfiles;
 using BookstoreSdk.Services.Interfaces;
 using BookstoreSdk.Services;
@@ -21,8 +20,8 @@ builder.Services.AddSingleton(mapper);
 builder.Services.AddScoped<IUserClient, UserClient>();
 builder.Services.AddScoped<IBookClient, BookClient>();
 
-builder.Services.AddScoped<IClientBookService>(provider => new ClientBookService("https://localhost:44388"));
-builder.Services.AddScoped<IClientUserService>(provider => new ClientUserService("https://localhost:44388"));
+builder.Services.AddScoped<IClientBookService>(provider => new ClientBookService("http://bookstoreapi:80"));
+builder.Services.AddScoped<IClientUserService>(provider => new ClientUserService("http://bookstoreapi:80"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

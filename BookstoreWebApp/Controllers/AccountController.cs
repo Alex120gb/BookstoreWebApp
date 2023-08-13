@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BookstoreSdk;
 using BookstoreSdk.Clients.Interface;
 using BookstoreSdk.ViewModels;
 using BookstoreWebApp.Models;
@@ -9,15 +8,12 @@ namespace BookstoreWebApp.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ILogger<AccountController> _logger;
         private readonly IUserClient _userClient;
         private readonly IMapper _mapper;
 
-        public AccountController(ILogger<AccountController> logger,
-                              IUserClient userClient,
-                              IMapper mapper)
+        public AccountController(IUserClient userClient,
+                                 IMapper mapper)
         {
-            _logger = logger;
             _userClient = userClient;
             _mapper = mapper;
 
@@ -35,30 +31,21 @@ namespace BookstoreWebApp.Controllers
         [HttpPost]
         public async Task<JsonResult> Login([FromBody] LoginRequestModel request)
         {
-            var result = await _userClient.Login(_mapper.Map<SdkLoginRequestModel>(request));
+            var mappedData = _mapper.Map<SdkLoginRequestModel>(request);
 
-            var response = new Response<string>() {
-                IsSuccessful = result.IsSuccessful,
-                Value = result.Value,
-                Message = result.Message
-            };
+            var result = await _userClient.Login(mappedData);
 
-            return Json(response);
+            return Json(result);
         }
 
         [HttpPut]
         public async Task<JsonResult> Register([FromBody] RegisterUserModel request)
         {
-            var result = await _userClient.RegisterUser(_mapper.Map<SdkRegisterUserModel>(request));
+            var mappedData = _mapper.Map<SdkRegisterUserModel>(request);
 
-            var response = new Response<int>()
-            {
-                IsSuccessful = result.IsSuccessful,
-                Value = result.Value,
-                Message = result.Message
-            };
+            var result = await _userClient.RegisterUser(mappedData);
 
-            return Json(response);
+            return Json(result);
         }
     }
 }

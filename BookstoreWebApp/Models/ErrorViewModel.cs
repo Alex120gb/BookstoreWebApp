@@ -1,8 +1,9 @@
-namespace BookstoreWebApp.Models;
-
-public class ErrorViewModel
+namespace BookstoreWebApp.Models
 {
-    public string? RequestId { get; set; }
+    public class ErrorViewModel
+    {
+        public string? RequestId { get; set; }
 
-    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
 }

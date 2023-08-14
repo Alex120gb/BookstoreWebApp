@@ -5,7 +5,7 @@ Will mention this again - to use the docker-compose file found in the api github
 1) Api: docker pull alexisk120/bookapi
 2) WebApp: docker pull alexisk120/bookwebapp
 
-Again I will mention that once more - for either case either local use or with the docker-compose file, you will also need to fill in the SQL Server the relative database with its data to properly use the project whith the use of the provided in api project sql script!
+Again I will mention that once more - for either case either local use or with the docker-compose file, after running the compose file you will also need to fill in the SQL Server the relative database with its data to properly use the project whith the use of the provided in api project sql script!
 
 Another note is the base api url - I initilize it by setting up the sdk client in the program file of the web project
 ![image](https://github.com/Alex120gb/BookstoreWebApp/assets/93439743/793a95c8-6950-49c5-8f9a-5da49b8c1902)

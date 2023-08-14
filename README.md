@@ -1,7 +1,7 @@
 # BookstoreWebApp
 This is the BookstoreWebApp project - or should I simply say the web app of the bookstore project.
 
-In here you will also find the docker-compose file which you can use as specified in the api project after downloading the two repositories from docker:
+Will mention this again - to use the docker-compose file found in the api github repository you will first need to download/pull this two docker repositories:
 1) Api: docker pull alexisk120/bookapi
 2) WebApp: docker pull alexisk120/bookwebapp
 

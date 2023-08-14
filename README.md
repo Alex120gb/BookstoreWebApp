@@ -18,4 +18,4 @@ Instructions on how to set up the api can be found in this repository https://gi
 But there is another link you can use which is this one: http://localhost:8080 - this only if the api runs in the docker, but for some reason you want to run locally the web project, this way you can use the api link of the api running on the docker server instead!
 That is all you really need to know regarding the webb app - to reiterate for local use (depending on use case): first deploy and run the api to see what the new local URL will be, and secondly copy that URL and paste it in the mentioned location mentioned above (in Program.cs).
 
-And again, in either case please dont forget to create the tables with the proivded sql script in the api github repository!
+And again, in either case please dont forget to create the tables with the provided sql script in the api github repository!

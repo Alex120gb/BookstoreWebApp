@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["BookstoreWebApp/BookstoreWebApp.csproj", "BookstoreWebApp/"]
 RUN mkdir -p /nuget-local
-COPY ./Release/Bookstore.Api.SDK.5.0.0.nupkg /nuget-local/
+COPY ./Release/Bookstore.Api.SDK.5.0.1.nupkg /nuget-local/
 RUN dotnet nuget add source /nuget-local -n LocalNuGet
 RUN dotnet restore "BookstoreWebApp/BookstoreWebApp.csproj"
 COPY . .

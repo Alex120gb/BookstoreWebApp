@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
+    $('.alert-danger').hide();
     var authToken = sessionStorage.getItem('token');
+
     if (authToken == null || authToken == "") {
         window.location.href = "/Account/Index";
     }
@@ -31,12 +33,16 @@
                 }
                 else {
                     $('#spinner').modal('hide');
+                    $('.alert-danger').text(response.message);
+                    $('.alert-danger').show();
                     alert(response.message);
                 }
 
             },
             error: function () {
                 $('#spinner').modal('hide');
+                $('.alert-danger').text(response.message);
+                $('.alert-danger').show();
                 alert("Something went wrong!");
             }
         });

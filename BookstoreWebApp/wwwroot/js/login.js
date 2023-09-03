@@ -1,4 +1,6 @@
 ﻿$(document).ready(function () {
+    $('.alert-danger').hide();
+
     sessionStorage.removeItem('token');
     $('#login-form').submit(function (event) {
         $('#spinner').modal('show');
@@ -23,15 +25,15 @@
                 }
                 else {
                     $('#spinner').modal('hide');
-                    $('.error-message').text(data.message);
-                    $('.error-message').show();
+                    $('.alert-danger').text(data.message);
+                    $('.alert-danger').show();
                 }
                 
             },
             error: function () {
                 $('#spinner').modal('hide');
-                $('.error-message').text('An error occurred while processing the data.');
-                $('.error-message').show();
+                $('.alert-danger').text('An error occurred while processing the data.');
+                $('.alert-danger').show();
             }
         });
     });

@@ -23,8 +23,8 @@ builder.Services.AddScoped<IBookClient, BookClient>();
 // USE THE LINK THAT YOUR VISUAL STUDIO WILL PRODUCE LOCALLY FOR YOUR API
 // FOR MY CASE IT WAS THIS - https://localhost:44388 OR IF YOU RUN THE API FROM DOCKER BUT
 // THE WEB APP FROM LOCAL USE THIS LINK INSTEAD http://localhost:8080
-builder.Services.AddScoped<IClientBookService>(provider => new ClientBookService("http://bookstoreapi:80"));
-builder.Services.AddScoped<IClientUserService>(provider => new ClientUserService("http://bookstoreapi:80"));
+builder.Services.AddScoped<IClientBookService>(provider => new ClientBookService("https://localhost:44388"));
+builder.Services.AddScoped<IClientUserService>(provider => new ClientUserService("https://localhost:44388"));
 
 var app = builder.Build();
 

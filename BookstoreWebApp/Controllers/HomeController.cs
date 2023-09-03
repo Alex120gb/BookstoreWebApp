@@ -36,9 +36,7 @@ namespace BookstoreWebApp.Controllers
 
             var result = await _bookClient.GetBooks(token);
 
-            var mappedData = _mapper.Map<List<GetUpdateBooksViewModel>>(result);
-
-            return Json(mappedData);
+            return Json(result);
         }
 
         [HttpPost]

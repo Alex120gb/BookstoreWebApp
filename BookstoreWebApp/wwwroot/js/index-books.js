@@ -15,9 +15,10 @@ $(document).ready(function () {
                 xhr.setRequestHeader('Authorization', authToken);
             },
         success: function (dataModel) {
+            console.log(dataModel.value);
             if (dataModel != null) {
                 dataTable = $('#bookTable').DataTable({
-                    data: dataModel, 
+                    data: dataModel.value, 
                     columns: [
                         { data: 'title' }, 
                         { data: 'author' },

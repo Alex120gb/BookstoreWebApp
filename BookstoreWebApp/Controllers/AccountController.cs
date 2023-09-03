@@ -38,7 +38,7 @@ namespace BookstoreWebApp.Controllers
             return Json(result);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<JsonResult> Register([FromBody] RegisterUserModel request)
         {
             var mappedData = _mapper.Map<SdkRegisterUserModel>(request);
